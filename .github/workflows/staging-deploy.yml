@@ -3,19 +3,19 @@ name: Deploy to staging
 on:
   push:
     branches:
-      - dev
+      - feat/add-staging-deployment
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-     - name: Cloning repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0         
-     - name: Dokku deploy
-        uses: dokku/github-action@master
-        with:
-          branch: dev
-          git_remote_url: 'ssh://dokku@app.etalab.studio/suivi-ouverture-staging'
-          ssh_private_key: ${{ secrets.DOKKU_DEPLOYMENT_SSH_PRIVATE_KEY }}
+    - name: Cloning repo
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0         
+    - name: Dokku deploy
+      uses: dokku/github-action@master
+      with:
+        branch: dev
+        git_remote_url: 'ssh://dokku@app.etalab.studio/suivi-ouverture-staging'
+        ssh_private_key: ${{ secrets.DOKKU_DEPLOYMENT_SSH_PRIVATE_KEY }}
