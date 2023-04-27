@@ -1,12 +1,10 @@
 name: Deploy to production
 
-on:
-  push:
-    branches:
-      - master
+on: 
+  workflow_dispatch: ~
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     # third-party action that cancels previous runs
